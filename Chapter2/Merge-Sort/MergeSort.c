@@ -5,7 +5,23 @@
 int Sort_Rank(int A[],int length);	//Insertion-Sort
 void Merge(int A[],int i,int j); 	
 void MergeSortion(int A[],int r);	
-
+int main()
+{
+	int i;
+	int A[10];
+	printf("Please input 10 number\n");
+	for(i=0;i<10;i++)
+	{
+		scanf("%d",&A[i]);
+	}
+	MergeSortion(A,10);
+	for(i=0;i<10;i++)
+	{
+		printf("%d ",A[i]);
+	}
+	printf("\n");
+	return 1;
+}
 int Sort_Rank(int A[],int length)
 {
 	int i,j;
@@ -33,10 +49,12 @@ void Merge(int A[],int i,int j)
 	int a,b;
 	int m,n;
 	int p;
-	int L[i],R[j];
+	int L[i+1],R[j+1];
+	L[i]=5000;	//as big as possible
+	R[j]=5000;	//as big as possible
 	for(m=0;m<i;m++)
 	{
-		L[m]=A[i];
+		L[m]=A[m];
 	}
 	for(m=0;m<j;m++)
 	{
@@ -46,7 +64,7 @@ void Merge(int A[],int i,int j)
 	Sort_Rank(L,i);		
 	Sort_Rank(R,j);
 	m=n=0;	
-	for(int p=0;p<r;p++)
+	for(p=0;p<i+j;p++)
 	{	
 		if(L[m]<R[n])
 		{
@@ -65,10 +83,10 @@ void MergeSortion(int A[],int r)
 	int i,j;
 	if(r>1)
 	{	
-		if(r/2)
+		if(r%2)
 		{
-			i=r/2-1;
-			j=r/2+1;
+			i=(r-1)/2;
+			j=(r+1)/2;
 		}
 		else
 		{
