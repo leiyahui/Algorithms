@@ -12,27 +12,11 @@ void main()
 {	int i=0;
 	int A[16];
 	Array array;
-	//printf("Plesase input 16 number\n");
-	//for(i=0;i<16;i++)
-	//{
-	//	scanf("%d",&A[i]);
-	//}
-	A[0]=13;
-	A[1]=-3;
-	A[2]=-25;
-	A[3]=20;
-	A[4]=-3;
-	A[5]=-16;
-	A[6]=-23;
-	A[7]=18;
-	A[8]=20;
-	A[9]=-7;
-	A[10]=12;
-	A[11]=-5;
-	A[12]=-22;
-	A[13]=15;
-	A[14]=-4;
-	A[15]=7;
+	printf("Plesase input 16 number\n");
+	for(i=0;i<16;i++)
+	{
+		scanf("%d",&A[i]);
+	}
 	array=Maximum_Array(A,0,15);
 	printf("%d,%d,%d\n",array.n_L,array.n_R,array.max);
 }
