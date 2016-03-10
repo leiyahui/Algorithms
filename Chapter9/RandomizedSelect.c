@@ -8,12 +8,15 @@ void main()
 	int A[10];
 	int i;
 	int s;
+	int n;
 	printf("please input 10 numbers\n");
 	for(i=0;i<10;i++)
 	{
 		scanf("%d",&A[i]);
 	}
-	s=Randomized_Select(A,0,9,5);
+	printf("Please input which one you want output\n");
+	scanf("%d",&n);
+	s=Randomized_Select(A,0,9,n);
 	printf("%d\n",s);
 }
 int Randomized_Partition(int A[],int begin,int end)
