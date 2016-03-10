@@ -23,10 +23,10 @@ void main()
 int Randomized_Partition(int A[],int begin,int end)
 {
 	int i,j;
-	int length;
 	int temp;
 	int s;
-	length=begin-end+1;
+	int length;	
+	length=end-begin+1;
 	srand((unsigned)time(NULL));
 	i=rand()%length+begin;		//create a random between begin and end
 	temp=A[i];
@@ -40,18 +40,21 @@ int Randomized_Partition(int A[],int begin,int end)
 			j++;
 			temp=A[j];
 			A[j]=A[i];
-			A[i]=A[j];
+			A[i]=temp;
 		}
 	}
-	A[begin]=A[i];
-	A[i]=s;
-	return i;
+	A[begin]=A[j];
+	A[j]=s;
+	return j;
 }		
 void Randomized_QuickSortion(int A[],int begin,int end)
 {
-	int i;
-	i=Randomized_Partition(A,begin,end);
-	Randomized_QuickSortion(A,begin,i-1);
-	Randomized_QuickSortion(A,i+1,end);
+	if(begin<end)
+	{
+		int i;
+		i=Randomized_Partition(A,begin,end);
+		Randomized_QuickSortion(A,begin,i-1);
+		Randomized_QuickSortion(A,i+1,end);
+	}
 }
 

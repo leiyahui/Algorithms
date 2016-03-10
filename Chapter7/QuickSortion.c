@@ -27,7 +27,7 @@ int Partition(int A[],int begin,int end)
 	length=end-begin+1;
 	center=A[end];
 	j=begin-1;
-	for(i=begin;i<length-1;i++)
+	for(i=begin;i<end;i++)
 	{
 		if(A[i]<center)
 		{	
@@ -37,9 +37,8 @@ int Partition(int A[],int begin,int end)
 			A[j]=temp;
 		}
 	}
-	temp=A[j+1];
+	A[end]=A[j+1];
 	A[j+1]=center;
-	A[end]=temp;
 	return j+1;
 }
 void QuickSortion(int A[],int begin,int end)
