@@ -48,7 +48,7 @@ void Calculate(int Sum[],int A[],int B[],int length,int n)
 		}
 	}
 }
-void main()
+int main()
 {
 	int Sum[1000];
 	int A[1000];
@@ -63,11 +63,17 @@ void main()
 	{
 		j--;
 	}
+	if(j==999)
+	{
+		printf("Overflow\n");
+		return 0;
+	}
 	for(i=j;i>=0;i--)
 	{
 		printf("%d",Sum[i]);
 	}
 	printf("\n");
+	return 1;
 }
 		
 		
