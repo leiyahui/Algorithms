@@ -1,5 +1,5 @@
 #include<stdio.h>
-void Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
+int Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
 {
 	int i,j;
 	int a,b,c;
@@ -10,12 +10,12 @@ void Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
 		Sum[i]=A[i]=B[i]=C[i]=0;
 	}
 	Sum[0]=1;
-	for(i=n;i>0;i--)
+	for(i=1;i<=n;i++)
 	{	
 		a=i%10;
 		b=(i%100)/10;
 		c=i/100;
-		for(j=0;j<length-1;j++)
+		for(j=0;j<=length-1;j++)
 		{
 			temp=Sum[j]*a;
 			temp1=temp%10;
@@ -23,7 +23,7 @@ void Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
 			A[j]+=temp1;
 			A[j+1]+=temp2;
 		}
-		for(j=0;j<length-2;j++)
+		for(j=0;j<=length-2;j++)
 		{
 			temp=Sum[j]*b;
 			temp1=temp%10;
@@ -31,7 +31,7 @@ void Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
 			B[j+1]+=temp1;
 			B[j+2]+=temp2;
 		}
-		for(j=0;j<length-3;j++)
+		for(j=0;j<=length-3;j++)
 		{
 			temp=Sum[j]*c;
 			temp1=temp%10;
@@ -43,19 +43,30 @@ void Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
 		{
 			Sum[j]=0;
 		}
-		for(j=0;j<length-1;j++)
+		for(j=0;j<=length-1;j++)
 		{
 			temp=A[j]+B[j]+C[j];
+			temp+=temp2;
 			temp1=temp%10;
 			temp2=temp/10;
 			Sum[j]+=temp1;
-			Sum[j+1]+=temp2;
+			if(j==length-1)
+			{
+				if(temp2!=0)
+				{
+					if(i<n)
+					{
+						return 0;
+					}
+				}
+			}
 		}
 		for(j=0;j<length;j++)
 		{
 			A[j]=B[j]=C[j]=0;
 		}
 	}
+	return 1;
 }
 int main()
 {
@@ -67,16 +78,16 @@ int main()
 	int n;
 	printf("please input a number:\n");
 	scanf("%d",&n);
-	Calculate(Sum,A,B,C,1000,n);
+	j=Calculate(Sum,A,B,C,1000,n);
+	if(j==0)
+	{
+		printf("overflow\n");
+		return 0;
+	}
 	j=999;
 	while(Sum[j]==0)
 	{
 		j--;
-	}
-	if(j==999)
-	{
-		printf("Overflow\n");
-		return 0;
 	}
 	for(i=j;i>=0;i--)
 	{

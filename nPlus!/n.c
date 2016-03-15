@@ -1,5 +1,5 @@
 #include<stdio.h>
-void Calculate(int Sum[],int length,int n)
+int Calculate(int Sum[],int length,int n)
 {
 	int i,j;
 	int temp;
@@ -17,30 +17,48 @@ void Calculate(int Sum[],int length,int n)
 			temp1=temp%10000;
 			temp2=temp/10000;
 			Sum[j]=temp1;
+			if(j==length-1)
+			{
+				if(temp2!=0)
+				{
+					if(i<n)
+					{
+						return 0;
+					}
+				}
+			}	
 		}
 	}
+	return 1;
 }
 int main()
 {
-	int Sum[1000];
+	int Sum[10000];
 	int i,j;
 	int n;
 	printf("please input a number:\n");
 	scanf("%d",&n);
-	Calculate(Sum,1000,n);
-	j=999;
+	j=Calculate(Sum,10000,n);
+	if(j==0)
+	{
+		printf("overflow\n");
+		return 0;
+	}
+	j=9999;
 	while(Sum[j]==0)
 	{
 		j--;
 	}
-	if(j==999)
-	{
-		printf("Overflow\n");
-		return 0;
-	}
 	for(i=j;i>=0;i--)
 	{
-		printf("%d     ",Sum[i]);
+		if(i==j)
+		{
+			printf("%d",Sum[i]);
+		}
+		else
+		{
+			printf("%04d",Sum[i]);
+		}
 	}
 	printf("\n");
 	return 1;
