@@ -15,34 +15,38 @@ int Calculate(int Sum[],int A[],int B[],int C[],int length,int n)
 		a=i%10;
 		b=(i%100)/10;
 		c=i/100;
+		temp2=0;
 		for(j=0;j<=length-1;j++)
 		{
 			temp=Sum[j]*a;
+			temp+=temp2;
 			temp1=temp%10;
 			temp2=temp/10;
 			A[j]+=temp1;
-			A[j+1]+=temp2;
 		}
+		temp2=0;
 		for(j=0;j<=length-2;j++)
 		{
 			temp=Sum[j]*b;
+			temp+=temp2;
 			temp1=temp%10;
 			temp2=temp/10;
 			B[j+1]+=temp1;
-			B[j+2]+=temp2;
 		}
+		temp2=0;
 		for(j=0;j<=length-3;j++)
 		{
 			temp=Sum[j]*c;
+			temp+=temp2;
 			temp1=temp%10;
 			temp2=temp/10;
 			C[j+2]+=temp1;
-			C[j+3]+=temp2;
 		}
 		for(j=0;j<length;j++)
 		{
 			Sum[j]=0;
 		}
+		temp2=0;
 		for(j=0;j<=length-1;j++)
 		{
 			temp=A[j]+B[j]+C[j];

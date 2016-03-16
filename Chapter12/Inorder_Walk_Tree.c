@@ -19,15 +19,18 @@ void Push(SNodeList* head,Node n)
 	sList.next=*head;
 	*head=sList;
 }
-Node Pop(SNodeList* head)
+bool Pop(SNodeList* head,Node* node)
 {	
-	Node node;
+	if(head==NULL)
+	{
+		return false;
+	}
 	SNodeList sList;
-	node=head->node;
+	*node=head->node;
 	sList=*head;
 	*head=head->next;
 	free(sList);
-	return node
+	return true;
 }	
 void Inorder_Walk_Tree(Node x);
 {
@@ -43,7 +46,7 @@ void Inorder_Walk_Tree(Node x);
 	printf("%d ",n.data);
 	while(head!=NULL)
 	{
-		n=Pop(&head);
+		Pop(&head,&n);
 		printf("%d ",n.data);
 		if(n.right!=NULL)
 		{
