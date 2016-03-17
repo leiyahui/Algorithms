@@ -2,7 +2,7 @@
 int Calculate(int Sum[],int length,int n)
 {
 	int i,j;
-	long long temp;
+	unsigned long temp;
 	int temp1,temp2;
 	for(i=0;i<length;i++)
 	{
