@@ -4,6 +4,7 @@ int bottom_cut_rod(int A[],int B[],int n)
 {
 	int i;
 	int temp,sum;
+	sum=-10000;
 	if(n==0)
 	{
 		return 0;
