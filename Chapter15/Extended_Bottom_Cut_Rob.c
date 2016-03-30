@@ -1,40 +1,40 @@
+
 #include<stdio.h>
 #include<stdlib.h>
-int memorized_cut_rod(int A[],int B[],int n)
+int bottom_cut_rod(int A[],int B[],int S[],int n)
 {
-	int i;
+	int i,j;
 	int p,temp;
-	p=-10000;
-	if(n==0)
-	{
-		return 0;
-	}
+	B[0]=0;
 	for(i=1;i<=n;i++)
 	{
-		if(B[n-i]!=0)			//the value have been stored
+		p=-10000;
+		for(j=1;j<=i;j++)
 		{
-			temp=A[i]+B[n-i];
-			if(temp>p)
+			temp=B[i-j]+A[j];
+			if(p<temp)
 			{
 				p=temp;
+				S[i]=j;
 			}
 		}
-		else
-		{
-			B[n-i]=memorized_cut_rod(A,B,n-i);		//the value haven't been stored
-			temp=A[i]+B[n-i];
-			if(temp>p)
-			{
-				p=temp;
-			}
-		}
+		B[j-1]=p;
 	}
 	return p;
 }
+void print_cut_rob(int S[],int n)
+{
+	while(n>0)
+	{
+		printf("%d ",S[n]);
+		n=n-S[n];
+	}
+}
 void main()
 {
-	int A[11];
+	int A[10];
 	int* B;
+	int* S;
 	int i;	
 	int n;
 	int sum;
@@ -51,10 +51,13 @@ void main()
 	printf("Please input n\n");
 	scanf("%d",&n);	
 	B=(int*)malloc(sizeof(int)*(n+1));
+	S=(int*)malloc(sizeof(int)*(n+1));
 	for(i=0;i<=n;i++)
 	{
 		B[i]=0;
 	}
-	sum=memorized_cut_rod(A,B,n);
+	sum=bottom_cut_rod(A,B,S,n);
 	printf("\n%d\n",sum);
+	print_cut_rob(S,n);
+	printf("\n");
 }

@@ -1,5 +1,5 @@
 #include<stdio.h>
-int cut_rob(int A[],int n,int c)
+int cut_rob(int A[],int n)
 {
 	int i,temp;
 	int q=-10000	;	//as minimum as possible
@@ -7,9 +7,9 @@ int cut_rob(int A[],int n,int c)
 	{
 		return 0;
 	}
-	for(i=0;i<n;i++)
+	for(i=1;i<=n;i++)
 	{
-		temp=A[i+1]+cut_rob(A,n-i-1,c+1);
+		temp=A[i]+cut_rob(A,n-i);
 		if(q<temp)
 		{
 			q=temp;
@@ -19,21 +19,21 @@ int cut_rob(int A[],int n,int c)
 }	
 void main()
 {
-	int A[10];
+	int A[11];
 	int n;
 	int q;
-	int i;
-	A[1]=1;
+	A[1]=2;
 	A[2]=5;
 	A[3]=8;
 	A[4]=9;
 	A[5]=10;
 	A[6]=17;
+	A[7]=17;
 	A[8]=20;
 	A[9]=24;
 	A[10]=30;
 	printf("Please input n\n");
 	scanf("%d",&n);
-	q=cut_rob(A,n,0); 
+	q=cut_rob(A,n); 
 	printf("%d\n",q);
 }

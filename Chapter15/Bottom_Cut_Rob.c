@@ -2,27 +2,23 @@
 #include<stdlib.h>
 int bottom_cut_rod(int A[],int B[],int n)
 {
-	int i;
-	int temp,sum;
-	sum=-10000;
-	if(n==0)
+	int i,j;
+	int p,temp;
+	B[0]=0;
+	for(i=1;i<=n;i++)
 	{
-		return 0;
-	}
-	for(i=n-1;i>=0;i--)
-	{
-		if(B[n-i-1]==0)
+		p=-10000;
+		for(j=1;j<=i;j++)
 		{
-			
-			B[n-i-1]=bottom_cut_rod(A,B,n-i-1);
-		}	
-		temp=A[i]+B[n-i-1];
-		if(temp>sum)
-		{
-			sum=temp;
+			temp=B[i-j]+A[j];
+			if(p<temp)
+			{
+				p=temp;
+			}
 		}
+		B[j-1]=p;
 	}
-	return sum;	
+	return p;
 }
 void main()
 {
@@ -31,19 +27,19 @@ void main()
 	int i;	
 	int n;
 	int sum;
-	A[0]=1;
-	A[1]=5;
-	A[2]=8;
-	A[3]=9;
-	A[4]=10;
-	A[5]=17;
+	A[1]=2;
+	A[2]=5;
+	A[3]=8;
+	A[4]=9;
+	A[5]=10;
 	A[6]=17;
-	A[7]=20;
-	A[8]=24;
-	A[9]=30;
+	A[7]=17;
+	A[8]=20;
+	A[9]=24;
+	A[10]=30;
 	printf("Please input n\n");
 	scanf("%d",&n);	
-	B=(int*)malloc(sizeof(int)*n);
+	B=(int*)malloc(sizeof(int)*(n+1));
 	for(i=0;i<n;i++)
 	{
 		B[i]=0;
