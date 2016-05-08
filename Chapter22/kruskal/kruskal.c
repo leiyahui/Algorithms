@@ -4,7 +4,6 @@
 	> Mail:13269398812@163.com 
 	> Created Time: 2016年05月06日 星期五 10时35分55秒
  ************************************************************************/
-
 #include<stdio.h>
 #include"graph.h"
 #include"heap_sortion.h"
@@ -20,30 +19,30 @@ void make_set(int x)
     s[x]->rank=0;
     s[x]->parent=s[x];
 }
-node* find_set(int x)       
+node* find_set(node* x)       
 {
-    if(s[x]->parent!=x)
+    if(x->parent!=x)
     {
-        s[x]->parent=find_set(s[x]);
+        x->parent=find_set(x->parent);
     }
-    return s[x];
+    return x->parent;
 }
-void link_set(int x,int y)
+void link_set(node* x,node* y)
 {
-    if(s[x]->rank>s[y]->rank)
+    if(x->rank>y->rank)
     {
-        s[y]->parent=s[x];
+        y->parent=x;
     }
     else 
     {
-        s[x]->parent=s[y];
-        if(s[x]->rank==s[y]->rank)
+        x->parent=y;
+        if(x->rank==y->rank)
         {
-            s[y]->rank++;
+            y->rank++;
         }
     }
 }
-void union_set(int x,int y)
+void union_set(node* x,node* y)
 {
     link_set(find_set(x),find_set(y));
 }
@@ -85,10 +84,10 @@ void kruskal(item vertex[],int numV,int numE)
         rear=e[i].rear;
         hash_value_front=hash_vertex(front); 
         hash_value_rear=hash_vertex(rear);
-        if(find_set(hash_value_front)!=find_set(hash_value_rear))
+        if(find_set(s[hash_value_front])!=find_set(s[hash_value_rear]))
         {
-            union_set(hash_value_front,hash_value_rear);
-            printf("%d %d\n",front,rear);
+            union_set(s[hash_value_front],s[hash_value_rear]);
+            printf("%c %c\n",front,rear);
         }
     }
 }
@@ -96,14 +95,5 @@ void main()
 {
     item vertex[100];
     graph_create(vertex,9,14);
-    kruskal(vertex,8,14);
+    kruskal(vertex,9,14);
 }
-    
-    
-
-
-
-
-     
-
-

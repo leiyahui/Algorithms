@@ -13,7 +13,7 @@ typedef struct _edge_node
     Vertex rear;
     Dis_Vertex weight;
 }edge_node;             
-void max_heapify(edge_node e[],int i);        //maintain max heap
+void max_heapify(edge_node e[],int num,int i);        //maintain max heap
 void build_max_heap(edge_node e[],int num);     //creat max heap
 void heap_sortion(edge_node e[],int num);       //sort edge_node by edge_node.weight
     

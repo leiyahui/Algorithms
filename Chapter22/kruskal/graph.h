@@ -7,6 +7,8 @@
 #define BLACK		3
 #define true		1
 #define false		0
+#ifndef _GRAPH_H
+#define _GRAPH_H
 typedef int bool;
 typedef char Vertex;
 typedef int  Dis_Vertex;
@@ -27,3 +29,4 @@ typedef struct _item
 			
 }item;
 bool graph_create(item vertex[],int numV,int numE);
+#endif

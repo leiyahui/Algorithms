@@ -18,7 +18,7 @@ void exchange_edge(edge_node* x,edge_node* y)
     x->front=y->front;
     x->rear=y->rear;
     y->weight=tmp_weight;
-    y->front=tmp->front;
+    y->front=tmp_front;
     y->rear=tmp_rear;
 }
 void max_heapify(edge_node e[],int num,int i)
@@ -26,35 +26,27 @@ void max_heapify(edge_node e[],int num,int i)
     int left,right;
     int largest;
     int temp;
-    if(i%2)
-    {
-        left=i/2;
-        right=i/2+1;
-    }
-    else
-    {
-        left=right=i/2;
-    }
+    left=2*i;
+    right=2*i+1;
     largest=i;
-    if(right<=num&&e[right].weight>e[i].weight)
+    if(right<=num&&e[right-1].weight>e[i-1].weight)
     {
         largest=right;
     }
-    if(A[left]>A[largest])
+    if(left<=num&&e[left-1].weight>e[largest-1].weight)
     {
         largest=left;
     }
     if(largest!=i)
     {
-        exchange_edeg(e+i,e+largest);
+        exchange_edge(e+i-1,e+largest-1);
         max_heapify(e,num,largest);
     }
 }
 void create_max_heap(edge_node e[],int num)
 {
     int i;
-    i=num/2;        //max none leaf node
-    for(i=num/2;i>=0;i--)
+    for(i=num/2;i>=1;i--)
     {
         max_heapify(e,num,i);
     }
@@ -63,10 +55,10 @@ void heap_sortion(edge_node e[],int num)
 {
     int i;
     create_max_heap(e,num);
-    for(i=0;i<num-1;i++)
+    for(i=1;i<num;i++)
     {
-        exchange(e+0,e+num-i-1);
-        max_heapify(e,num-i-1,0);
+        exchange_edge(e,e+num-i);
+        max_heapify(e,num-i,1);
     }
 }
     
