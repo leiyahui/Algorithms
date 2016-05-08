@@ -23,9 +23,7 @@ typedef struct _item
 	edge* adj;
 	int color;
 	int par;
-	int d;			//first time to be found
-	int f;			//final time to be found
+	int dest;		//destination
 			
 }item;
 bool graph_create(item vertex[],int numV,int numE);
-void graph_time(item vertex[],int numV);

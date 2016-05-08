@@ -44,3 +44,11 @@ bool graph_create(item vertex[],int numV,int numE)
 	}
 	return true;
 }
+void graph_time(item vertex[],int num)
+{
+    int i;
+    for(i=0;i<num;i++)
+    {
+        printf("%c d:%d f:%d\n",vertex[i].data,vertex[i].d,vertex[i].f);
+    }
+}

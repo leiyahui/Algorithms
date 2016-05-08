@@ -28,4 +28,5 @@ typedef struct _item
 			
 }item;
 bool graph_create(item vertex[],int numV,int numE);
+void graph_transpose(item vertex[],item vertex_trans[],int numV);
 void graph_time(item vertex[],int numV);

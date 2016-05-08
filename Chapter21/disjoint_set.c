@@ -28,6 +28,6 @@ void make_set(int i)
 }
 set* find_set(int i)
 {
-	13161884446	
+    
 	
 

@@ -1,0 +1,31 @@
+graph.c: In function ‘graph_create’:
+graph.c:10:12: error: incompatible types when assigning to type ‘FILE {aka struct _IO_FILE}’ from type ‘FILE * {aka struct _IO_FILE *}’
+     fp_edge=fopen("edge.txt","r");
+            ^
+graph.c:22:9: warning: passing argument 1 of ‘scanf’ from incompatible pointer type [-Wincompatible-pointer-types]
+   scanf(fp_vertex,"%c\n",&vertex[i].data);
+         ^
+In file included from /usr/include/features.h:364:0,
+                 from /usr/include/limits.h:25,
+                 from /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:168,
+                 from /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:7,
+                 from /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:34,
+                 from graph.h:1,
+                 from graph.c:1:
+/usr/include/stdio.h:446:12: note: expected ‘const char * restrict’ but argument is of type ‘FILE * {aka struct _IO_FILE *}’
+ extern int __REDIRECT (scanf, (const char *__restrict __format, ...),
+            ^
+graph.c:57:10: error: incompatible type for argument 1 of ‘fscanf’
+   fscanf(fp_edge,"%d,%d,%d\n",&vi,&vj,&weight);
+          ^
+In file included from /usr/include/features.h:364:0,
+                 from /usr/include/limits.h:25,
+                 from /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:168,
+                 from /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:7,
+                 from /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:34,
+                 from graph.h:1,
+                 from graph.c:1:
+/usr/include/stdio.h:443:12: note: expected ‘FILE * restrict {aka struct _IO_FILE * restrict}’ but argument is of type ‘FILE {aka struct _IO_FILE}’
+ extern int __REDIRECT (fscanf, (FILE *__restrict __stream,
+            ^
+make: *** [graph.o] Error 1

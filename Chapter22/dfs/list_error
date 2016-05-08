@@ -1,0 +1,13 @@
+stack.c: In function ‘pop’:
+stack.c:28:20: error: ‘node {aka struct _node}’ has no member named ‘edge’
+  out_edge=free_node->edge;
+                    ^
+stack.c:31:9: error: ‘out_dest’ undeclared (first use in this function)
+  return out_dest;
+         ^
+stack.c:31:9: note: each undeclared identifier is reported only once for each function it appears in
+stack.c: In function ‘get_top’:
+stack.c:35:17: error: ‘node {aka struct _node}’ has no member named ‘edge’
+  return (s->top)->edge;
+                 ^
+make: *** [stack.o] Error 1
