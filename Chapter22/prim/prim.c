@@ -10,43 +10,73 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"graph.h"
-#include<limits.h>
-typedef struct _v_adj
+#include"edge_stack.h"
+void prim(item vertex[],int numV,int s)
 {
-    int subscribe;
-    int key;
-    struct _v_adj* next;
-}v_adj;
-void init_link(v_adj* head,v_adj* rear)
-{
-    head=rear=(v_adj*)malloc(sizeof(rear));
-    if(head==NULL)
+    int i;
+    edge_link* link;
+    edge_adj* curr_node;
+    edge* curr_edge;
+    for(i=0;i<numV;i++)
     {
-        printf("init malloc fail\n");
-        exit(0);
+        vertex[i].color=WHITE;
+        vertex[i].par=0;
     }
-}
-    
-void insert_link(v_adj* rear,int subscribe,int key)
-{
-    v_adj* in_node;
-    in_node=(v_adj*)malloc(sizeof(v_adj));
-    in_node->subscribe=subscribe;
-    in_node->key=key;
-    in_node->next=NULL:
-    rear->next=in_node;
-    rear=in_node;
-}
-key del_link(v_adj* head,int subscribe)
-{
-    v_adj* curr_edge;
-    curr_edge=head->next;
+    vertex[s].color=BLACK;
+    init_link(link);
+    curr_edge=vertex[s].adj;
     while(curr_edge!=NULL)
     {
-        if(curr_edge->subscribe==subscribe)
+        if(vertex[curr_edge->dest].color==WHITE)
         {
-            return curr_edge->key;
+            insert_link(link,curr_edge->dest,s,curr_edge->weight);
         }
+        curr_edge=curr_edge->next;
     }
-    printf("link don't have the node");
+    while(!is_empty(link))
+    {
+        curr_node=del_min_link(link);
+        vertex[curr_node->dest].color=BLACK;
+        printf("%c %c %d\n",vertex[curr_node->par].data,vertex[curr_node->dest].data,curr_node->weight);
+        curr_edge=vertex[curr_node->dest].adj;
+        while(curr_edge!=NULL)
+        {
+           if(vertex[curr_edge->dest].color==WHITE)
+           {
+                insert_link(link,curr_edge->dest,curr_node->dest,curr_edge->weight);
+           }
+           curr_edge=curr_edge->next;
+        }
+        free(curr_node);
+    }
 }
+void main()
+{
+    item vertex[9];
+    graph_create(vertex,9,14);
+    prim(vertex,9,0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
