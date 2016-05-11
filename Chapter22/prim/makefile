@@ -6,3 +6,5 @@ graph.o:graph.h graph.c
 	gcc -g -c -o graph.o graph.c
 edge_stack.o:edge_stack.h edge_stack.c
 	gcc -g -c -o edge_stack.o edge_stack.c
+clean:
+	rm -rf prim.o graph.o edge_stack.o

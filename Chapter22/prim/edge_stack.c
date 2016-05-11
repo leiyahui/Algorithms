@@ -51,6 +51,7 @@ int del_link(edge_link* link,int dest,int par)
 edge_adj* del_min_link(edge_link* link)
 {
     edge_adj* curr_node,* ret_node,* p_ret_node;
+    p_ret_node=(link->head);
     curr_node=(link->head)->next;
     ret_node=(link->head)->next;
     while((curr_node->next)!=NULL)

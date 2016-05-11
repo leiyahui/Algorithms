@@ -15,6 +15,7 @@ void prim(item vertex[],int numV,int s)
 {
     int i;
     edge_link* link;
+    link=(edge_link*)malloc(sizeof(edge_link));
     edge_adj* curr_node;
     edge* curr_edge;
     for(i=0;i<numV;i++)
