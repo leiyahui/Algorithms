@@ -7,13 +7,19 @@
 
 #ifndef _EDGE_H
 #define _EDGE_H
-typedef struct _edge
+#include"graph.h"
+typedef struct _w_edge
 {
     int from;
     int end;
-}edge;
+    int weight;
+}w_edge;
 typedef struct _queue
 {
-    edge* edges;
-    int 
+    w_edge* all_edge;
+}queue;
+queue* init_queue(int num_v);
+int in_queue(queue* que,item vertex[],int num_v);
+w_edge* get_queue(queue* que,int i);
+void destroy_queue(queue* que);
 #endif
