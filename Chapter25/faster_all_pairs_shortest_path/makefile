@@ -7,4 +7,4 @@ graph.o:graph.c graph.h dynamic_malloc_array.h
 dynamic_malloc_array.o:dynamic_malloc_array.h dynamic_malloc_array.c
 	gcc -g -c -o dynamic_malloc_array.o dynamic_malloc_array.c
 clean:
-	rm -rf dynamic_malloc_array.o graph.o faster_pairs_shortest_path.o
+	rm -rf dynamic_malloc_array.o graph.o faster_all_pairs_shortest_path.o
