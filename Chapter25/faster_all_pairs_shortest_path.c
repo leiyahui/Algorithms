@@ -17,7 +17,7 @@ static void extend_short_path(int** vertex,int** vertex_before,int** vertex_adj,
             vertex[i][j]=INT_MAX;
             for(k=0;k<n;k++)
             {
-                vertex[i][j]=min_num((long)vertex[i][j],(long)(vertex_before[i][k]+vertex_adj[k][j]));
+                vertex[i][j]=min_num((long)vertex[i][j],(long)vertex_before[i][k]+vertex_adj[k][j]);
             }
         }
     }
