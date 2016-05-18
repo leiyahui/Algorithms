@@ -1,5 +1,4 @@
 #include"graph.h"
-#include"dynamic_malloc_array.h"
 int** create_graph(int n)
 {
     FILE* fp;

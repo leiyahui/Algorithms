@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<limits.h>
 void array()
 {
     int i;
@@ -71,9 +72,17 @@ void dynamic_malloc_all()
         }
     }
 }
+void stack_overflow(int a,int b)
+{
+    long c;
+    c=(long)a+b;
+    printf("%d\n",c);
+}
 void main()
 {
-    array();
+ /*   array();
     dynamic_array();
-    dynamic_malloc_all();
+    dynamic_malloc_all();*/
+    printf("%d\n",sizeof(int));
+    stack_overflow(INT_MAX,INT_MAX);
 }
